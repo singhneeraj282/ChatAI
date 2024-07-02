@@ -12,5 +12,5 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class ChatDTO {
     @NotBlank
-    String prompt;
+    String message;
 }
