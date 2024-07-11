@@ -53,4 +53,8 @@ public class Customer {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "customer")//To make this association bidirectional, all we’ll have to do is to define the referencing side. The inverse or the referencing side simply maps to the owning side.
     private Set<Account> account;
 
+    @Version
+    @Column(name= "verion")
+    private long verion;
+
 }

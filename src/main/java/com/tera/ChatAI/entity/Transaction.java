@@ -21,32 +21,35 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "COUNTER_PARTY_NAME")
+    @Column(name = "counter_party_name")
     private String counterPartyName;
 
-    @Column(name = "COUNTER_PARTY_ACCOUNT")
+    @Column(name = "counter_party_account")
     private String counterPartyAccount;
 
-    @Column(name = "TYPE")
+    @Column(name = "type")
     private LedgerType type;
 
-    @Column(name = "REMITTANCE_INFO")
+    @Column(name = "remittance_info")
     private String remittanceInfo;
 
-    @Column(name = "AMOUNT")
+    @Column(name = "amount")
     private BigDecimal amount;
 
-    @Column(name = "BOOKING_DATE")
+    @Column(name = "booking_date")
     private Instant bookingDate;
 
-    @Column(name = "VALUE_DATE")
+    @Column(name = "value_date")
     private Instant valueDate;
 
-    @Column(name = "CURRENCY")
+    @Column(name = "currency")
     private CurrencyCode currency;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    Account account;
+    @Version
+    @Column(name= "verion")
+    private long verion;
 
+    @ManyToOne
+    @JoinColumn(name = "account_bban")
+    Account account;
 }

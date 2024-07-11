@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="neeraj" id="createTablesForBank">
+        <createTable tableName="CUSTOMER">
+            <column autoIncrement="true" name="id" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="phone" type="varchar(255)"/>
+            <column name="user_name" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="address" type="varchar(255)"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="country" type="varchar(255)"/>
+            <column name="customer_type" type="varchar(255)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="ACCOUNT">
+            <column autoIncrement="true" name="bban" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_type" type="varchar(255)"/>
+            <column name="iban_number" type="varchar(255)"/>
+            <column name="iban_name" type="varchar(255)"/>
+            <column name="pan" type="varchar(255)"/>
+            <column name="currency" type="varchar(255)"/>
+            <column name="status" type="varchar(255)"/>
+            <column name="balance" type="decimal(10,6)"/>
+            <column name="lastChange" type="datetime"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="customer_id" type="Long"/>
+        </createTable>
+
+        <createTable tableName="TRANSACTION">
+            <column autoIncrement="true" name="bban" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="counter_party_name" type="varchar(255)"/>
+            <column name="counter_party_account" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="remittance_info" type="varchar(255)"/>
+            <column name="amount" type="decimal(10,6)"/>
+            <column name="booking_date" type="datetime"/>
+            <column name="value_date" type="datetime"/>
+            <column name="lastChange" type="datetime"/>
+            <column name="currency" type="varchar(255)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="account_bban" type="Long"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="ACCOUNT"
+                                 constraintName="fk_account_owner_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="CUSTOMER"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_bban"
+                                 baseTableName="TRANSACTION"
+                                 constraintName="fk_account_owner_bban"
+                                 referencedColumnNames="bban"
+                                 referencedTableName="ACCOUNT"/>
+
+    </changeSet>
+</databaseChangeLog>

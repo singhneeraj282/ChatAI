@@ -20,35 +20,39 @@ import java.util.List;
 public class Account {
 
     @Id
-    @Column(name = "BBAN")
+    @Column(name = "bban")
     private long accountNumber;//BBAN (Account Number)
 
-    @Column(name = "ACCOUNT_TYPE")
+    @Column(name = "account_type")
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
-    @Column(name = "IBAN_NUMBER")
+    @Column(name = "iban_number")
     private String ibanNumber;//International bank account
 
-    @Column(name = "IBAN_NAME")
+    @Column(name = "iban_name")
     private String ibanName;
 
-    @Column(name = "PAN")
+    @Column(name = "pan")
     private String pan;
 
-    @Column(name = "CURRENCY")
+    @Column(name = "currency")
     @Enumerated(EnumType.STRING)
     private CurrencyCode currency;
 
-    @Column(name = "STATUS")
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
-    @Column(name = "BALANCE")
+    @Column(name = "balance")
     private BigDecimal balance;
 
-    @Column(name = "LAST_CHANGE")
+    @Column(name = "last_change")
     private Instant lastChange;
+
+    @Version
+    @Column(name= "verion")
+    private long verion;
 
     @ManyToOne()
     @JoinColumn(name = "customer_id")
@@ -56,5 +60,4 @@ public class Account {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
     private List<Transaction> transactions;
-
 }
