@@ -16,18 +16,18 @@ public interface BankAPI {
     ResponseEntity<List<CustomerDTO>> findAllCustomers();
 
     @GetMapping(value = "/customers/{customerId}")
-    ResponseEntity<CustomerDTO> findCustomerById(@PathVariable String customerId);
+    ResponseEntity<CustomerDTO> findCustomerById(@PathVariable Long customerId);
 
     @GetMapping(value = "/accounts")
     ResponseEntity<List<AccountDTO>> findAllAccounts();
 
     @GetMapping(value = "/accounts/{accountId}")
-    ResponseEntity<AccountDTO> findAccountById(@PathVariable String accountId);
+    ResponseEntity<AccountDTO> findAccountById(@PathVariable Long accountNumber);
 
     @GetMapping(value = "/transactions")
     ResponseEntity<List<TransactionDTO>> findAllTransaction();
 
     @GetMapping(value = "/transactions/{transactionId}")
-    ResponseEntity<TransactionDTO> findAllTransaction(@PathVariable String transactionId);
+    ResponseEntity<TransactionDTO> findTransactionByTransactionId(@PathVariable Long transactionId);
 
 }
