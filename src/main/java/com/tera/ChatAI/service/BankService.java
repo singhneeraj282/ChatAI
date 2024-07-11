@@ -6,7 +6,6 @@ import com.tera.ChatAI.bo.TransactionBO;
 import com.tera.ChatAI.mapper.bo.AccountBOMapper;
 import com.tera.ChatAI.mapper.bo.CustomerBOMapper;
 import com.tera.ChatAI.mapper.bo.TransactionBOMapper;
-import com.tera.ChatAI.mapper.dto.CustomerDTOMapper;
 import com.tera.ChatAI.repository.AccountRepository;
 import com.tera.ChatAI.repository.CustomerRepository;
 import com.tera.ChatAI.repository.TransactionRepository;
@@ -14,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
