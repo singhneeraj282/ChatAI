@@ -18,7 +18,7 @@ spring:
     username: sa
     password: sa
     #if want  to persist data/save data (not delete after every restart)
-    url: jdbc:h2:./data/bankData
+    url: jdbc:h2:C:/Users/91757/Desktop/ChatAI/data/bankData
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
