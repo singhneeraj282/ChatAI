@@ -34,13 +34,13 @@
             <column name="currency" type="varchar(255)"/>
             <column name="status" type="varchar(255)"/>
             <column name="balance" type="decimal(10,6)"/>
-            <column name="lastChange" type="datetime"/>
+            <column name="last_change" type="datetime"/>
             <column name="version" type="bigint" defaultValue="0"/>
             <column name="customer_id" type="Long"/>
         </createTable>
 
         <createTable tableName="TRANSACTION">
-            <column autoIncrement="true" name="bban" type="Long">
+            <column autoIncrement="true" name="id" type="Long">
                 <constraints primaryKey="true"/>
             </column>
             <column name="counter_party_name" type="varchar(255)"/>
