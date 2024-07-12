@@ -54,7 +54,7 @@ public class Customer {
     private Set<Account> account;
 
     @Version
-    @Column(name= "verion")
-    private long verion;
+    @Column(name= "version")
+    private long version;
 
 }

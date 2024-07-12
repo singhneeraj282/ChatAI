@@ -51,8 +51,8 @@ public class Account {
     private Instant lastChange;
 
     @Version
-    @Column(name= "verion")
-    private long verion;
+    @Column(name= "version")
+    private long version;
 
     @ManyToOne()
     @JoinColumn(name = "customer_id")

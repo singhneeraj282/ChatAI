@@ -46,8 +46,8 @@ public class Transaction {
     private CurrencyCode currency;
 
     @Version
-    @Column(name= "verion")
-    private long verion;
+    @Column(name= "version")
+    private long version;
 
     @ManyToOne
     @JoinColumn(name = "account_bban")
