@@ -54,10 +54,7 @@ public class Account {
     @Column(name= "version")
     private long version;
 
-    @ManyToOne()
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "account")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_bban", referencedColumnName = "bban")
     private List<Transaction> transactions;
 }

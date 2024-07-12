@@ -33,6 +33,4 @@ public class TransactionBO {
     private CurrencyCode currency;
 
     private long version;
-
-    AccountBO account;
 }

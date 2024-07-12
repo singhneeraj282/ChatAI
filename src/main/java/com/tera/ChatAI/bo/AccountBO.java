@@ -35,7 +35,5 @@ public class AccountBO {
 
     private long version;
 
-    private CustomerBO customer;
-
     private List<TransactionBO> transactions;
 }

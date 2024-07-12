@@ -48,8 +48,4 @@ public class Transaction {
     @Version
     @Column(name= "version")
     private long version;
-
-    @ManyToOne
-    @JoinColumn(name = "account_bban")
-    Account account;
 }

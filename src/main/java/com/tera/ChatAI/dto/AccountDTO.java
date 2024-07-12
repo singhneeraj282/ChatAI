@@ -1,7 +1,6 @@
 package com.tera.ChatAI.dto;
 
 import com.neovisionaries.i18n.CurrencyCode;
-import com.tera.ChatAI.bo.CustomerBO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,8 +33,6 @@ public class AccountDTO {
     private Instant lastChange;
 
     private long version;
-
-    private CustomerBO customer;
 
     private List<TransactionDTO> transactions;
 }

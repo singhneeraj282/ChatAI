@@ -31,6 +31,4 @@ public class TransactionDTO {
     private CurrencyCode currency;
 
     private long version;
-
-    AccountDTO account;
 }
