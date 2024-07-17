@@ -4,6 +4,18 @@ server:
 spring:
   application:
     name: ChatAI
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://bank-data-server.database.windows.net:1433;database=bank-data;user=bank-data-admin@bank-data-server;password=Jan@2020ne;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: none # spring will create the table's
   ai:
     openai:
       base-url: https://api.openai.com
@@ -23,6 +35,7 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml
     enabled: true
+    drop-first: true #---initially set it true later set to false
 management:
   endpoints:
     web:

@@ -7,7 +7,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <changeSet author="neeraj" id="createTablesForBank">
         <createTable tableName="CUSTOMER">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="first_name" type="varchar(255)"/>
@@ -25,7 +25,7 @@
         </createTable>
 
         <createTable tableName="ACCOUNT">
-            <column autoIncrement="true" name="account_id" type="Long">
+            <column autoIncrement="true" name="account_id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="account_type" type="varchar(255)"/>
@@ -40,11 +40,11 @@
             <column name="avg_balance" type="decimal(10,6)"/>
             <column name="last_change" type="datetime"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="customer_id" type="Long"/>
+            <column name="customer_id" type="BIGINT"/>
         </createTable>
 
         <createTable tableName="TRANSACTION">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="amount" type="decimal(10,6)"/>
@@ -56,22 +56,22 @@
             <column name="currency" type="varchar(255)"/>
             <column name="avg_balance" type="decimal(10,6)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="account_account_id" type="Long"/>
+            <column name="account_account_id" type="BIGINT"/>
         </createTable>
 
         <createTable tableName="CREDIT_CARD">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="credit_card_number" type="varchar(255)"/>
             <column name="type" type="varchar(255)"/>
             <column name="fee" type="decimal(10,6)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="account_account_id" type="Long"/>
+            <column name="account_account_id" type="BIGINT"/>
         </createTable>
 
         <createTable tableName="CREDIT_CARD_TRANSACTION">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="transaction_amount" type="decimal(10,6)"/>
@@ -80,22 +80,22 @@
             <column name="merchant_category_code" type="varchar(255)"/>
             <column name="merchant_name" type="varchar(255)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="credit_card_id" type="Long"/>
+            <column name="credit_card_id" type="BIGINT"/>
         </createTable>
 
         <createTable tableName="DEBIT_CARD">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="debit_card_number" type="varchar(255)"/>
             <column name="type" type="varchar(255)"/>
             <column name="fee" type="decimal(10,6)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="account_account_id" type="Long"/>
+            <column name="account_account_id" type="BIGINT"/>
         </createTable>
 
         <createTable tableName="DEBIT_CARD_TRANSACTION">
-            <column autoIncrement="true" name="id" type="Long">
+            <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
             <column name="transaction_amount" type="decimal(10,6)"/>
@@ -104,7 +104,7 @@
             <column name="merchant_category_code" type="varchar(255)"/>
             <column name="merchant_name" type="varchar(255)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="debit_card_id" type="Long"/>
+            <column name="debit_card_id" type="BIGINT"/>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="customer_id"
