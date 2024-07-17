@@ -1,6 +1,5 @@
 package com.tera.ChatAI.dto;
 
-import com.neovisionaries.i18n.CurrencyCode;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @Builder
-public class TransactionDTO {
+public class CreditCardTransactionDTO {
 
     private long id;
 
@@ -19,17 +18,10 @@ public class TransactionDTO {
 
     private LedgerType type;
 
-    private String transactionCode;
+    private Instant transactionDateAndTime;
 
     private String merchantCategoryCode;
 
     private String merchantName;
 
-    private Instant transactionDateAndTime;
-
-    private CurrencyCode currency;
-
-    private BigDecimal avgBalance;
-
-    private long version;
 }

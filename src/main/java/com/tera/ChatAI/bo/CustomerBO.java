@@ -5,17 +5,21 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
 @Setter
 @Builder
 public class CustomerBO {
+
     private long id;
 
     private String firstName;
 
     private String lastName;
+
+    private LocalDate dateOfBirth;
 
     private String email;
 
@@ -34,6 +38,4 @@ public class CustomerBO {
     private String customerType;
 
     private Set<AccountBO> account;
-
-    private long version;
 }

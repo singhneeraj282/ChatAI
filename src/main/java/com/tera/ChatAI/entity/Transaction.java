@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
-@Table(name = "TRANSACTION")
+@Table(name = "CUSTOMER_TRANSACTION")
 @Getter
 @Setter
 @NoArgsConstructor

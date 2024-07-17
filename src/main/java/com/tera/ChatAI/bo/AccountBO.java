@@ -15,7 +15,8 @@ import java.util.List;
 @Setter
 @Builder
 public class AccountBO {
-    private long accountNumber;//BBAN (Account Number)
+
+    private long accountId;
 
     private AccountType accountType;
 
@@ -31,9 +32,20 @@ public class AccountBO {
 
     private BigDecimal balance;
 
+    private BigDecimal fee;
+
+    private BigDecimal minBalance;
+
+    private BigDecimal avg_balance;
+
     private Instant lastChange;
 
     private long version;
 
     private List<TransactionBO> transactions;
+
+    private List<CreditCardBO> creditCards;
+
+    private List<DebitCardBO> debitCards;
+
 }

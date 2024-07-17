@@ -16,21 +16,21 @@ public class TransactionBO {
 
     private long id;
 
-    private String counterPartyName;
-
-    private String counterPartyAccount;
+    private BigDecimal amount;
 
     private LedgerType type;
 
-    private String remittanceInfo;
+    private String transactionCode;
 
-    private BigDecimal amount;
+    private String merchantCategoryCode;
 
-    private Instant bookingDate;
+    private String merchantName;
 
-    private Instant valueDate;
+    private Instant transactionDateAndTime;
 
     private CurrencyCode currency;
+
+    private BigDecimal avgBalance;
 
     private long version;
 }

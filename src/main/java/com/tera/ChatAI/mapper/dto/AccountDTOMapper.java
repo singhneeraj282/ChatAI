@@ -6,10 +6,9 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import static org.mapstruct.ReportingPolicy.ERROR;
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = "spring", uses = {CustomerDTOMapper.class, TransactionDTOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
+@Mapper(componentModel = "spring", uses = {CustomerDTOMapper.class, TransactionDTOMapper.class, DebitCardDTOMapper.class, CreditCardDTOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
 public interface AccountDTOMapper {
     AccountDTO map(AccountBO accountBO);
 

@@ -1,12 +1,8 @@
 package com.tera.ChatAI.controller.impl;
 
 import com.tera.ChatAI.controller.BankAPI;
-import com.tera.ChatAI.dto.AccountDTO;
-import com.tera.ChatAI.dto.CustomerDTO;
-import com.tera.ChatAI.dto.TransactionDTO;
-import com.tera.ChatAI.mapper.dto.AccountDTOMapper;
-import com.tera.ChatAI.mapper.dto.CustomerDTOMapper;
-import com.tera.ChatAI.mapper.dto.TransactionDTOMapper;
+import com.tera.ChatAI.dto.*;
+import com.tera.ChatAI.mapper.dto.*;
 import com.tera.ChatAI.service.BankService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +19,8 @@ public class BankController implements BankAPI {
     private final AccountDTOMapper accountDTOMapper;
     private final CustomerDTOMapper customerDTOMapper;
     private final TransactionDTOMapper transactionDTOMapper;
+    private final CreditCardDTOMapper creditCardDTOMapper;
+    private final DebitCardDTOMapper debitCardDTOMapper;
 
 
     @Override
@@ -60,4 +58,29 @@ public class BankController implements BankAPI {
                 .map(transactionDTOMapper::map)
                 .orElse(null));
     }
+
+    @Override
+    public ResponseEntity<List<CreditCardDTO>> findAllCreditCards() {
+        return ResponseEntity.ok(creditCardDTOMapper.map(bankService.findAllCreditCards()));
+    }
+
+    @Override
+    public ResponseEntity<CreditCardDTO> findCreditCardById(Long id) {
+        return ResponseEntity.ok(Optional.ofNullable(bankService.findCreditCardById(id))
+                .map(creditCardDTOMapper::map)
+                .orElse(null));
+    }
+
+    @Override
+    public ResponseEntity<List<DebitCardDTO>> findAllDebitCards() {
+        return ResponseEntity.ok(debitCardDTOMapper.map(bankService.findAllDebitCards()));
+    }
+
+    @Override
+    public ResponseEntity<DebitCardDTO> findDebitCardById(Long id) {
+        return ResponseEntity.ok(Optional.ofNullable(bankService.findDebitCardById(id))
+                .map(debitCardDTOMapper::map)
+                .orElse(null));
+    }
+
 }

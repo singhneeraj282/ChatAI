@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 public class AccountDTO {
 
-    private long accountNumber;//BBAN (Account Number)
+    private long accountId;
 
     private AccountType accountType;
 
@@ -30,9 +30,19 @@ public class AccountDTO {
 
     private BigDecimal balance;
 
+    private BigDecimal fee;
+
+    private BigDecimal minBalance;
+
+    private BigDecimal avg_balance;
+
     private Instant lastChange;
 
     private long version;
 
     private List<TransactionDTO> transactions;
+
+    private List<CreditCardDTO> creditCards;
+
+    private List<DebitCardDTO> debitCards;
 }

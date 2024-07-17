@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = "spring", uses = {TransactionBOMapper.class, CustomerBOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
+@Mapper(componentModel = "spring", uses = {TransactionBOMapper.class, CustomerBOMapper.class, CreditCardBOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
 public interface AccountBOMapper {
     AccountBO map(Account account);
 

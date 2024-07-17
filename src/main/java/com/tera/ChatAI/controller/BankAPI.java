@@ -1,8 +1,7 @@
 package com.tera.ChatAI.controller;
 
-import com.tera.ChatAI.dto.AccountDTO;
-import com.tera.ChatAI.dto.CustomerDTO;
-import com.tera.ChatAI.dto.TransactionDTO;
+import com.tera.ChatAI.dto.*;
+import com.tera.ChatAI.entity.CustomerMasterData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,7 @@ public interface BankAPI {
     @GetMapping(value = "/accounts")
     ResponseEntity<List<AccountDTO>> findAllAccounts();
 
-    @GetMapping(value = "/accounts/{accountId}")
+    @GetMapping(value = "/accounts/{accountNumber}")
     ResponseEntity<AccountDTO> findAccountById(@PathVariable Long accountNumber);
 
     @GetMapping(value = "/transactions")
@@ -29,5 +28,18 @@ public interface BankAPI {
 
     @GetMapping(value = "/transactions/{transactionId}")
     ResponseEntity<TransactionDTO> findTransactionByTransactionId(@PathVariable Long transactionId);
+
+    @GetMapping(value = "/credit-cards")
+    ResponseEntity<List<CreditCardDTO>> findAllCreditCards();
+
+    @GetMapping(value = "/credit-cards/{id}")
+    ResponseEntity<CreditCardDTO> findCreditCardById(@PathVariable Long id);
+
+    @GetMapping(value = "/debit-cards")
+    ResponseEntity<List<DebitCardDTO>> findAllDebitCards();
+
+    @GetMapping(value = "/debit-cards/{id}")
+    ResponseEntity<DebitCardDTO> findDebitCardById(@PathVariable Long id);
+
 
 }
