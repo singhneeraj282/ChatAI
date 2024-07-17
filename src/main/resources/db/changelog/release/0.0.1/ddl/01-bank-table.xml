@@ -107,25 +107,6 @@
             <column name="debit_card_id" type="BIGINT"/>
         </createTable>
 
-        <createTable tableName="CUSTOMER_MASTER_DATA">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="avg_monthly_balance" type="decimal(10,6)"/>
-            <column name="total_inflows" type="INT"/>
-            <column name="total_outflows" type="INT"/>
-            <column name="age" type="INT"/>
-        </createTable>
-
-        <createTable tableName="CUSTOMER_MERCHANT_CATEGORY">
-            <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="merchant_type" type="varchar(255)"/>
-            <column name="merchant_amount" type="decimal(10,6)"/>
-            <column name="customer_master_data_id" type="BIGINT"/>
-        </createTable>
-
         <addForeignKeyConstraint baseColumnNames="customer_id"
                                  baseTableName="ACCOUNT"
                                  constraintName="fk_customer_account_id"
@@ -162,10 +143,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="DEBIT_CARD"/>
 
-        <addForeignKeyConstraint baseColumnNames="customer_master_data_id"
-                                 baseTableName="CUSTOMER_MERCHANT_CATEGORY"
-                                 constraintName="fk_customer_master_data_CUSTOMER_MERCHANT_CATEGORY_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="CUSTOMER_MASTER_DATA"/>
     </changeSet>
 </databaseChangeLog>
