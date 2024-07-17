@@ -20,6 +20,11 @@ public class ChatController implements ChatAPI {
     }
 
     @Override
+    public ResponseEntity<String> azureChat(String prompt) {
+        return ResponseEntity.ok(chatService.azureChat(prompt));
+    }
+
+    @Override
     public ResponseEntity<String> chatWithDocument(ChatDTO dto, MultipartFile file) {
         return ResponseEntity.ok(chatService.chatWithDocument(dto, file));
     }
@@ -27,5 +32,10 @@ public class ChatController implements ChatAPI {
     @Override
     public ResponseEntity<String> chatWithSegments(ChatDTO dto) {
         return ResponseEntity.ok(chatService.chatWithSegments(dto));
+    }
+
+    @Override
+    public ResponseEntity<String> azureChatWithSegments(ChatDTO dto) {
+        return ResponseEntity.ok(chatService.azureChatWithSegments(dto));
     }
 }

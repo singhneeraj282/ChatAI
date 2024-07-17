@@ -20,8 +20,8 @@ import java.util.List;
 public class Account {
 
     @Id
-    @Column(name = "bban")
-    private long accountNumber;//BBAN (Account Number)
+    @Column(name = "account_id")
+    private long accountId;
 
     @Column(name = "account_type")
     @Enumerated(EnumType.STRING)
@@ -47,14 +47,33 @@ public class Account {
     @Column(name = "balance")
     private BigDecimal balance;
 
+    @Column(name = "fee")
+    private BigDecimal fee;
+
+    @Column(name = "min_balance")
+    private BigDecimal minBalance;
+
+    @Column(name = "avg_balance")
+    private BigDecimal avg_balance;
+
     @Column(name = "last_change")
     private Instant lastChange;
 
     @Version
-    @Column(name= "version")
+    @Column(name = "version")
     private long version;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_bban", referencedColumnName = "bban")
+    @JoinColumn(name = "account_account_id", referencedColumnName = "account_id")
     private List<Transaction> transactions;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_account_id", referencedColumnName = "account_id")
+    private List<CreditCard> creditCards;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_account_id", referencedColumnName = "account_id")
+    private List<DebitCard> debitCards;
+
+
 }

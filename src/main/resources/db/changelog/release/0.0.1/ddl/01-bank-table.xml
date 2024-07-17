@@ -12,6 +12,7 @@
             </column>
             <column name="first_name" type="varchar(255)"/>
             <column name="last_name" type="varchar(255)"/>
+            <column name="date_of_birth" type="date"/>
             <column name="email" type="varchar(255)"/>
             <column name="phone" type="varchar(255)"/>
             <column name="user_name" type="varchar(255)"/>
@@ -24,7 +25,7 @@
         </createTable>
 
         <createTable tableName="ACCOUNT">
-            <column autoIncrement="true" name="bban" type="Long">
+            <column autoIncrement="true" name="account_id" type="Long">
                 <constraints primaryKey="true"/>
             </column>
             <column name="account_type" type="varchar(255)"/>
@@ -34,6 +35,9 @@
             <column name="currency" type="varchar(255)"/>
             <column name="status" type="varchar(255)"/>
             <column name="balance" type="decimal(10,6)"/>
+            <column name="fee" type="decimal(10,6)"/>
+            <column name="min_balance" type="decimal(10,6)"/>
+            <column name="avg_balance" type="decimal(10,6)"/>
             <column name="last_change" type="datetime"/>
             <column name="version" type="bigint" defaultValue="0"/>
             <column name="customer_id" type="Long"/>
@@ -43,29 +47,100 @@
             <column autoIncrement="true" name="id" type="Long">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="counter_party_name" type="varchar(255)"/>
-            <column name="counter_party_account" type="varchar(255)"/>
-            <column name="type" type="varchar(255)"/>
-            <column name="remittance_info" type="varchar(255)"/>
             <column name="amount" type="decimal(10,6)"/>
-            <column name="booking_date" type="datetime"/>
-            <column name="value_date" type="datetime"/>
-            <column name="lastChange" type="datetime"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="transaction_code" type="varchar(255)"/>
+            <column name="merchant_category_code" type="varchar(255)"/>
+            <column name="merchant_name" type="varchar(255)"/>
+            <column name="transaction_date_time" type="datetime"/>
             <column name="currency" type="varchar(255)"/>
+            <column name="avg_balance" type="decimal(10,6)"/>
             <column name="version" type="bigint" defaultValue="0"/>
-            <column name="account_bban" type="Long"/>
+            <column name="account_account_id" type="Long"/>
         </createTable>
+
+        <createTable tableName="CREDIT_CARD">
+            <column autoIncrement="true" name="id" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="credit_card_number" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="fee" type="decimal(10,6)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="account_account_id" type="Long"/>
+        </createTable>
+
+        <createTable tableName="CREDIT_CARD_TRANSACTION">
+            <column autoIncrement="true" name="id" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="transaction_amount" type="decimal(10,6)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="transaction_date_time" type="datetime"/>
+            <column name="merchant_category_code" type="varchar(255)"/>
+            <column name="merchant_name" type="varchar(255)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="credit_card_id" type="Long"/>
+        </createTable>
+
+        <createTable tableName="DEBIT_CARD">
+            <column autoIncrement="true" name="id" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="debit_card_number" type="varchar(255)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="fee" type="decimal(10,6)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="account_account_id" type="Long"/>
+        </createTable>
+
+        <createTable tableName="DEBIT_CARD_TRANSACTION">
+            <column autoIncrement="true" name="id" type="Long">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="transaction_amount" type="decimal(10,6)"/>
+            <column name="type" type="varchar(255)"/>
+            <column name="transaction_date_time" type="datetime"/>
+            <column name="merchant_category_code" type="varchar(255)"/>
+            <column name="merchant_name" type="varchar(255)"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+            <column name="debit_card_id" type="Long"/>
+        </createTable>
+
         <addForeignKeyConstraint baseColumnNames="customer_id"
                                  baseTableName="ACCOUNT"
-                                 constraintName="fk_account_owner_id"
+                                 constraintName="fk_customer_account_id"
                                  referencedColumnNames="id"
                                  referencedTableName="CUSTOMER"/>
 
-        <addForeignKeyConstraint baseColumnNames="account_bban"
+        <addForeignKeyConstraint baseColumnNames="account_account_id"
                                  baseTableName="TRANSACTION"
-                                 constraintName="fk_account_owner_bban"
-                                 referencedColumnNames="bban"
+                                 constraintName="fk_account_transaction_account_id"
+                                 referencedColumnNames="account_id"
                                  referencedTableName="ACCOUNT"/>
 
+        <addForeignKeyConstraint baseColumnNames="account_account_id"
+                                 baseTableName="CREDIT_CARD"
+                                 constraintName="fk_account_credit_card_account_id"
+                                 referencedColumnNames="account_id"
+                                 referencedTableName="ACCOUNT"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_account_id"
+                                 baseTableName="DEBIT_CARD"
+                                 constraintName="fk_account_debit_card_account_id"
+                                 referencedColumnNames="account_id"
+                                 referencedTableName="ACCOUNT"/>
+
+        <addForeignKeyConstraint baseColumnNames="credit_card_id"
+                                 baseTableName="CREDIT_CARD_TRANSACTION"
+                                 constraintName="fk_credit_card_credit_card_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="CREDIT_CARD"/>
+
+        <addForeignKeyConstraint baseColumnNames="debit_card_id"
+                                 baseTableName="DEBIT_CARD_TRANSACTION"
+                                 constraintName="fk_debit_card_debit_card_transaction_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="DEBIT_CARD"/>
     </changeSet>
 </databaseChangeLog>

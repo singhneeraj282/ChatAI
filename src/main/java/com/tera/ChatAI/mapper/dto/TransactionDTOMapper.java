@@ -7,8 +7,9 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 import static org.mapstruct.ReportingPolicy.ERROR;
+import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = "spring", uses = {AccountDTOMapper.class}, unmappedSourcePolicy = ERROR, unmappedTargetPolicy = ERROR)
+@Mapper(componentModel = "spring", uses = {AccountDTOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
 public interface TransactionDTOMapper {
     TransactionDTO map(TransactionBO transactionBO);
 

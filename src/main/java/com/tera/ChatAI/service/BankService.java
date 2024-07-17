@@ -41,7 +41,7 @@ public class BankService {
     }
 
     public AccountBO findAccountByAccountNumber(Long accountNumber) {
-        return accountRepository.findByAccountNumber(accountNumber)
+        return accountRepository.findByAccountId(accountNumber)
                 .map(accountBOMapper::map)
                 .orElse(null);
     }

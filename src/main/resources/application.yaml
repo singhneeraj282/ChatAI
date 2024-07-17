@@ -12,6 +12,14 @@ spring:
         options:
           model: gpt-3.5-turbo
           temperature: 0.7
+    azure:
+      openai:
+        api-key: db7392e32ee5462bb6ec42c48fccd7a2
+        endpoint: https://bank-chat-segment-ai.openai.azure.com/
+        chat:
+          enabled: true
+          options:
+            deployment-name: bankChatSegmentAi
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml
     enabled: true

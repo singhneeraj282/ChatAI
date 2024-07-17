@@ -4,8 +4,8 @@ import com.neovisionaries.i18n.CountryCode;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "CUSTOMER")
@@ -24,6 +24,9 @@ public class Customer {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
 
     @Column(name = "email")
     private String email;

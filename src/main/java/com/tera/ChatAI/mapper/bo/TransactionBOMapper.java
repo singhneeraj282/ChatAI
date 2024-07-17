@@ -6,9 +6,9 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-import static org.mapstruct.ReportingPolicy.ERROR;
+import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = "spring", uses = {AccountBOMapper.class}, unmappedSourcePolicy = ERROR, unmappedTargetPolicy = ERROR)
+@Mapper(componentModel = "spring", uses = {AccountBOMapper.class}, unmappedSourcePolicy = IGNORE, unmappedTargetPolicy = IGNORE)
 public interface TransactionBOMapper {
     TransactionBO map(Transaction transaction);
 
