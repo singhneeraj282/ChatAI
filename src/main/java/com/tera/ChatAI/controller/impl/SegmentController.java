@@ -26,7 +26,7 @@ public class SegmentController implements SegmentAPI {
     }
 
     @Override
-    public ResponseEntity<CustomerMasterData> populateCustomerMasterData() {
+    public ResponseEntity<List<CustomerMasterData>> populateCustomerMasterData() {
         return ResponseEntity.ok(segmentService.populateCustomerMasterData());
     }
 }

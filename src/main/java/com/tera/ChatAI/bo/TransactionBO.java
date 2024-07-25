@@ -30,7 +30,5 @@ public class TransactionBO {
 
     private CurrencyCode currency;
 
-    private BigDecimal avgBalance;
-
     private long version;
 }

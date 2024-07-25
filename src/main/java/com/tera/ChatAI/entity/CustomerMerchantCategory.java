@@ -22,4 +22,8 @@ public class CustomerMerchantCategory {
 
     @Column(name = "merchant_amount")
     private BigDecimal merchantAmount;
+
+    @Version
+    @Column(name= "version")
+    private long version;
 }

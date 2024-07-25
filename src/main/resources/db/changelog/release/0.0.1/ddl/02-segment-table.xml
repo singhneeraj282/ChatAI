@@ -10,10 +10,12 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="customer_id" type="BIGINT"/>
             <column name="avg_monthly_balance" type="decimal(10,6)"/>
-            <column name="total_inflows" type="INT"/>
-            <column name="total_outflows" type="INT"/>
-            <column name="age" type="INT"/>
+            <column name="total_inflows" type="BIGINT"/>
+            <column name="total_outflows" type="BIGINT"/>
+            <column name="age" type="BIGINT"/>
+            <column name="version" type="bigint" defaultValue="0"/>
         </createTable>
 
         <createTable tableName="CUSTOMER_MERCHANT_CATEGORY">
@@ -23,6 +25,7 @@
             <column name="merchant_type" type="varchar(255)"/>
             <column name="merchant_amount" type="decimal(10,6)"/>
             <column name="customer_master_data_id" type="BIGINT"/>
+            <column name="version" type="bigint" defaultValue="0"/>
         </createTable>
 
         <addForeignKeyConstraint baseColumnNames="customer_master_data_id"

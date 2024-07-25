@@ -54,7 +54,6 @@
             <column name="merchant_name" type="varchar(255)"/>
             <column name="transaction_date_time" type="datetime"/>
             <column name="currency" type="varchar(255)"/>
-            <column name="avg_balance" type="decimal(10,6)"/>
             <column name="version" type="bigint" defaultValue="0"/>
             <column name="account_account_id" type="BIGINT"/>
         </createTable>

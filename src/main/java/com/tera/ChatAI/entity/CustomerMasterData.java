@@ -18,17 +18,25 @@ public class CustomerMasterData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "customer_id")
+    private long customerId;
+
     @Column(name = "avg_monthly_balance")
     private BigDecimal avgMonthlyBalance;
 
     @Column(name = "total_inflows")
-    private int totalInflows;
+    private long totalInflows;
 
     @Column(name = "total_outflows")
-    private int totalOutflows;
+    private long totalOutflows;
 
     @Column(name = "age")
-    private int age;
+    private long age;
+
+    @Version
+    @Column(name= "version")
+    private long version;
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_master_data_id", referencedColumnName = "id")

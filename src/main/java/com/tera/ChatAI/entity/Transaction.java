@@ -41,9 +41,6 @@ public class Transaction {
     @Column(name = "currency")
     private CurrencyCode currency;
 
-    @Column(name = "avg_balance")
-    private BigDecimal avgBalance;
-
     @Version
     @Column(name = "version")
     private long version;

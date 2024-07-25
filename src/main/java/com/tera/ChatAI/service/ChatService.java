@@ -23,6 +23,7 @@ public class ChatService {
             You are a helpful AI assistant that helps people find information.
             Your name is {name}
             You should reply to the user's request with your name and also in the style of a {segment}
+            give me offer related to this seg
             """;
     private final OpenAiChatModel chatModel;
     private final AzureOpenAiChatModel azureOpenAiChatModel;

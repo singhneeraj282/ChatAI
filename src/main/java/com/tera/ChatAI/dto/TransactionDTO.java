@@ -29,7 +29,5 @@ public class TransactionDTO {
 
     private CurrencyCode currency;
 
-    private BigDecimal avgBalance;
-
     private long version;
 }

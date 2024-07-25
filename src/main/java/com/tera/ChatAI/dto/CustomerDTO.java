@@ -37,5 +37,5 @@ public class CustomerDTO {
 
     private String customerType;
 
-    private Set<AccountDTO> account;
+    private Set<AccountDTO> accounts;
 }

@@ -17,6 +17,6 @@ ResponseEntity<List<CustomerMasterData>> findCustomerMasterData();
     ResponseEntity<CustomerMasterData> findCustomerMasterDataById(@PathVariable Long id);
 
     @GetMapping(value = "/populate-customer-master-data")
-    ResponseEntity<CustomerMasterData> populateCustomerMasterData();
+    ResponseEntity<List<CustomerMasterData>> populateCustomerMasterData();
 
 }
