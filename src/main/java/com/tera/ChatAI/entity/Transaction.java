@@ -17,13 +17,14 @@ import java.time.Instant;
 @Builder
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "amount")
     private BigDecimal amount;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private LedgerType type;
 
     @Column(name = "transaction_code")
@@ -39,6 +40,7 @@ public class Transaction {
     private Instant transactionDateAndTime;
 
     @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
     private CurrencyCode currency;
 
     @Version

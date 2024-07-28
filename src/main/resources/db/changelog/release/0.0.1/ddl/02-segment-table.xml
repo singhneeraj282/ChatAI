@@ -11,7 +11,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="customer_id" type="BIGINT"/>
-            <column name="avg_monthly_balance" type="decimal(10,6)"/>
+            <column name="avg_monthly_balance" type="decimal(30,6)"/>
             <column name="total_inflows" type="BIGINT"/>
             <column name="total_outflows" type="BIGINT"/>
             <column name="age" type="BIGINT"/>
@@ -23,7 +23,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="merchant_type" type="varchar(255)"/>
-            <column name="merchant_amount" type="decimal(10,6)"/>
+            <column name="merchant_amount" type="decimal(30,6)"/>
             <column name="customer_master_data_id" type="BIGINT"/>
             <column name="version" type="bigint" defaultValue="0"/>
         </createTable>

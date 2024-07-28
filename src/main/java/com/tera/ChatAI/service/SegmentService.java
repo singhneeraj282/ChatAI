@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,12 +31,22 @@ public class SegmentService {
 
     public List<CustomerMasterData> populateCustomerMasterData() {
         var customers = bankService.findAllCustomers();
-        var customersMasterData = customers.stream()
+        var alreadyCreatedCustomerIds = customerMasterDataRepository.findAll().stream()
+                .map(CustomerMasterData::getCustomerId)
+                .toList();
+        var customersMasterDatas = customers.stream()
+                .filter(customer -> !alreadyCreatedCustomerIds.contains(customer.getId()))
                 .map(this::mapToCustomerMasterData)
                 .collect(Collectors.toList());
-        customerMasterDataRepository.saveAll(customersMasterData);
+        return customerMasterDataRepository.saveAll(customersMasterDatas);
+    }
 
-        return customersMasterData;
+    public CustomerMasterData populateCustomerMasterDataById(Long id) {
+        var customer = Optional.ofNullable(bankService.findCustomerById(id))
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        var customerMasterData = customerMasterDataRepository.findById(id)
+                .orElseGet(() -> mapToCustomerMasterData(customer));
+        return customerMasterDataRepository.save(customerMasterData);
     }
 
     private CustomerMasterData mapToCustomerMasterData(CustomerBO customerBO) {

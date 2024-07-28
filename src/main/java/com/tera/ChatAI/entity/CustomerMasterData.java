@@ -15,7 +15,7 @@ import java.util.Set;
 @Builder
 public class CustomerMasterData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "customer_id")
@@ -36,7 +36,6 @@ public class CustomerMasterData {
     @Version
     @Column(name= "version")
     private long version;
-
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_master_data_id", referencedColumnName = "id")

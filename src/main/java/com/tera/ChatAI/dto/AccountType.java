@@ -21,5 +21,6 @@ public enum AccountType {
     Tax,
     TransactingAccount,
     CashTrading,
-    CreditCard
+    CreditCard,
+    Checking
 }

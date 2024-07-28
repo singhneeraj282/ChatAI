@@ -16,13 +16,14 @@ import java.time.Instant;
 @Builder
 public class DebitCardTransaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "transaction_amount")
     private BigDecimal amount;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private LedgerType type;
 
     @Column(name = "transaction_date_time")

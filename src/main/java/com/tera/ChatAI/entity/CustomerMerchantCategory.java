@@ -14,11 +14,14 @@ import java.math.BigDecimal;
 @Builder
 public class CustomerMerchantCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "merchant_type")
     private String merchantType;
+
+    @Transient
+    private String merchantCategoryName;
 
     @Column(name = "merchant_amount")
     private BigDecimal merchantAmount;
