@@ -1,6 +1,8 @@
 package com.tera.ChatAI.views;
 
+import com.tera.ChatAI.entity.PersonalisedContent;
 import com.tera.ChatAI.repository.CustomerRepository;
+import com.tera.ChatAI.repository.PersonalisedContentRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.ByteArrayResource;
@@ -21,6 +23,7 @@ import java.io.InputStream;
 public class ChatView {
 
     private final CustomerRepository customerRepository;
+    private final PersonalisedContentRepository personalisedContentRepository;
 
     @RequestMapping("/")
     public ModelAndView login(Model model) {
@@ -50,6 +53,38 @@ public class ChatView {
         return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
     }
 
+    @RequestMapping("/downloadSegmentDataCsv")
+    @ResponseBody
+    public HttpEntity<ByteArrayResource>  downloadSegmentDataCsv(Model model) throws IOException {
+        InputStream in = getClass()
+                .getResourceAsStream("/files/SegmentData.xlsx");
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "force-download"));
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=SegmentData.xlsx");
+        return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
+    }
+
+    @RequestMapping("/downloadSegmentDataLogic")
+    @ResponseBody
+    public HttpEntity<ByteArrayResource>  downloadSegmentDataLogic(Model model) throws IOException {
+        InputStream in = getClass()
+                .getResourceAsStream("/files/SegmentDataLogic.xlsx");
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "force-download"));
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=SegmentDataLogic.xlsx");
+        return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
+    }
+
+    @RequestMapping("/downloadCampaignData")
+    @ResponseBody
+    public HttpEntity<ByteArrayResource>  downloadCampaignData(Model model) throws IOException {
+        InputStream in = getClass()
+                .getResourceAsStream("/files/CampaignPersonalised.xlsx");
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("application", "force-download"));
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=CampaignPersonalised.xlsx");
+        return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
+    }
 
     @RequestMapping("/segment")
     public ModelAndView segment(Model model) {
@@ -65,7 +100,12 @@ public class ChatView {
 
     @RequestMapping("/content")
     public ModelAndView content(Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        var customers = personalisedContentRepository.findAll();
+        modelAndView.setViewName("content");
+        modelAndView.addObject("personalisedData", customers);
 
-        return new ModelAndView("content");
+        return modelAndView;
+
     }
 }

@@ -42,21 +42,20 @@ public class ChatService {
     private static final String USER_TEXT_WHATSAPP = """
             All content generation and responses must strictly reference and adhere to the document provided. Responses should be clear, concise, and tailored to the needs of those seeking {type} content related to Bank of Baroda.\s
             create a whatsapp messages for a {segment} person(archetype = ruler) who has a saving & FD account with bank of baroda and an atm card he rarely uses (no internet banking or credit usage).\s
-            Write the message copy with emoji + heading(max 10 words) and subtext(max 32 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user profile to create the copy. Give in json format "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
+            Write the whatsapp copy with emoji + heading(max 10 words) and subtext(max 32 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user profile to create the copy. Give in json format "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
             """;
 
     private static final String USER_TEXT_EMAIL = """
             All content generation and responses must strictly reference and adhere to the document provided. Responses should be clear, concise, and tailored to the needs of those seeking {type} content related to Bank of Baroda.\s
             create a email messages for a {segment} person(archetype = ruler) who has a saving & FD account with bank of baroda and an atm card he rarely uses (no internet banking or credit usage).\s
-            Write a message copy with heading(max 10 words) and subtext(max 80 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user  profile to create the copy. Give in json format  "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
+            Write a email copy with heading(max 10 words) and subtext(max 80 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user  profile to create the copy. Give in json format  "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
             """;
 
     private static final String USER_TEXT_NOTIFICATION = """
             All content generation and responses must strictly reference and adhere to the document provided. Responses should be clear, concise, and tailored to the needs of those seeking {type} content related to Bank of Baroda.\s
             create a Notification messages for a {segment} person(archetype = ruler) who has a saving & FD account with bank of baroda and an atm card he rarely uses (no internet banking or credit usage).\s
-            Write a message copy with heading(max 4 words) and subtext(max 12 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user  profile to create the copy. Give in json format  "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
+            Write a notification copy with heading(max 4 words) and subtext(max 12 words) + reasoning behind the copy you created(100 words). Take context from knowledge base, segmentation and user  profile to create the copy. Give in json format  "heading": heading,"subtext": subtext,"reasoning": reasoning.\s
             """;
-    private final OpenApiWebMvcResource openApiResource;
 
     private final OpenAiChatModel chatModel;
     private final AzureOpenAiChatModel azureOpenAiChatModel;
