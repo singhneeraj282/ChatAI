@@ -23,11 +23,11 @@ public class WebSecurityConfig {
                 .headers((headers) -> headers
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/", "/login", "/h2-console/**").permitAll()
+                        .requestMatchers("/", "/login", "/h2-console/**","/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**"))
+                        .ignoringRequestMatchers("/h2-console/**", "/swagger-ui/**"))
                 .httpBasic(withDefaults());
         return http.build();
     }

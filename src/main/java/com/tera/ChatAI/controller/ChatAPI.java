@@ -1,11 +1,15 @@
 package com.tera.ChatAI.controller;
 
 import com.tera.ChatAI.dto.ChatDTO;
+import com.tera.ChatAI.entity.PersonalisedContent;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 @RequestMapping(value = "/api/v1/chat")
 public interface ChatAPI {
@@ -22,6 +26,6 @@ public interface ChatAPI {
     @PostMapping(value = "/promptWithSegments", consumes = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<String> chatWithSegments(@ModelAttribute @Valid ChatDTO dto);
 
-    @PostMapping(value = "/azure/promptWithSegments")
-    ResponseEntity<String> azureChatWithSegments(@ModelAttribute @Valid ChatDTO dto);
+    @GetMapping(value = "/azure/promptWithSegments")
+    ResponseEntity<List<PersonalisedContent>> azureChatWithSegments(@ModelAttribute @Valid ChatDTO dto) throws IOException;
 }

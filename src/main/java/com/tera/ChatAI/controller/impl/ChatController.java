@@ -2,11 +2,15 @@ package com.tera.ChatAI.controller.impl;
 
 import com.tera.ChatAI.controller.ChatAPI;
 import com.tera.ChatAI.dto.ChatDTO;
+import com.tera.ChatAI.entity.PersonalisedContent;
 import com.tera.ChatAI.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -35,7 +39,7 @@ public class ChatController implements ChatAPI {
     }
 
     @Override
-    public ResponseEntity<String> azureChatWithSegments(ChatDTO dto) {
-        return ResponseEntity.ok(chatService.azureChatWithSegments(dto));
+    public ResponseEntity<List<PersonalisedContent>> azureChatWithSegments(ChatDTO dto) throws IOException {
+        return ResponseEntity.ok(chatService.azureChatWithSegments());
     }
 }
