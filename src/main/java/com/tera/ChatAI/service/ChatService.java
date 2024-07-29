@@ -7,7 +7,6 @@ import com.tera.ChatAI.dto.ChatDTO;
 import com.tera.ChatAI.entity.PersonalisedContent;
 import com.tera.ChatAI.repository.PersonalisedContentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springdoc.webmvc.api.OpenApiWebMvcResource;
 import org.springframework.ai.azure.openai.AzureOpenAiChatModel;
 import org.springframework.ai.chat.messages.Media;
 import org.springframework.ai.chat.messages.SystemMessage;
@@ -122,10 +121,13 @@ public class ChatService {
         switch (messageType) {
             case "whatsapp":
                 messageTypeTemplate = USER_TEXT_WHATSAPP;
+                break;
             case "email":
                 messageTypeTemplate = USER_TEXT_EMAIL;
+                break;
             case "notification":
                 messageTypeTemplate = USER_TEXT_NOTIFICATION;
+                break;
             default:
                 messageTypeTemplate = USER_TEXT_NOTIFICATION;
         }
