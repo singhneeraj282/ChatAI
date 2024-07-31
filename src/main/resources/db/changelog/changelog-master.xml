@@ -9,5 +9,6 @@
     <include file="/db/changelog/release/0.0.1/ddl/01-bank-table.xml"/>
     <include file="/db/changelog/release/0.0.1/ddl/02-segment-table.xml"/>
     <include file="/db/changelog/release/0.0.1/ddl/03-personalised-content-table.xml"/>
+    <include file="/db/changelog/release/0.0.1/ddl/03-segment-definition-table.xml"/>
     <!--<include file="/db/changelog/release/0.0.1/dml/01-bank-data-insertion.xml"/>-->
 </databaseChangeLog>

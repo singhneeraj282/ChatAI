@@ -3,6 +3,7 @@ package com.tera.ChatAI.service;
 import com.tera.ChatAI.bo.CustomerBO;
 import com.tera.ChatAI.entity.CustomerMasterData;
 import com.tera.ChatAI.repository.CustomerMasterDataRepository;
+import com.tera.ChatAI.repository.SegmentDefinitionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface PersonalisedContentRepository extends JpaRepository<PersonalisedContent, Long> {
-    PersonalisedContent findBySegmentAndTypeAndMessageType(String segment, String type, String messageType);
+    PersonalisedContent findBySegmentAndPersonaAndTypeAndMessageType(String segment, String persona,  String type, String messageType);
 }

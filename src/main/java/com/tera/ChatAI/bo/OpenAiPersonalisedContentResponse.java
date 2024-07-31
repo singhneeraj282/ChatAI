@@ -16,6 +16,8 @@ public class OpenAiPersonalisedContentResponse {
     public static class Message {
         String heading;
         String subtext;
+        String cta;
+        String offerReasoning;
         String reasoning;
     }
 }
