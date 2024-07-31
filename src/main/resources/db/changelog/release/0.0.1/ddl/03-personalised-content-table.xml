@@ -11,14 +11,9 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="segment" type="varchar(5000)"/>
-            <column name="persona" type="varchar(5000)"/>
             <column name="type" type="varchar(255)"/>
             <column name="message_type" type="varchar(255)"/>
-            <column name="heading" type="varchar(5000)"/>
-            <column name="subtext" type="varchar(5000)"/>
-            <column name="cta" type="varchar(5000)"/>
-            <column name="offer_reasoning" type="varchar(5000)"/>
-            <column name="reasoning" type="varchar(8000)"/>
+            <column name="content" type="NVARCHAR(MAX)"/>
             <column name="version" type="bigint" defaultValue="0"/>
         </createTable>
     </changeSet>

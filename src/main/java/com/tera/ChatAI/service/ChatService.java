@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.Objects.nonNull;
 
@@ -173,7 +172,7 @@ public class ChatService {
                                         .map(messageType -> {
                                             try {
                                                 var personalisedContent = personalisedContentRepository
-                                                        .findBySegmentAndPersonaAndTypeAndMessageType(segment, persona, type, messageType);
+                                                        .findBySegmentAndTypeAndMessageType(segment, type, messageType);
                                                 if (nonNull(personalisedContent))
                                                     return personalisedContent;
                                                 return populateMessagesForEducationalSegment(in, segment, persona, type, messageType, promptMessageType);
@@ -232,14 +231,9 @@ public class ChatService {
         return Optional.ofNullable(openAiResponse)
                 .map(response -> personalisedContentRepository.save(PersonalisedContent.builder()
                         .segment(segment)
-                        .persona(persona)
                         .type(type)
                         .messageType(messageType)
-                        .heading(response.getHeading())
-                        .subtext(response.getSubtext())
-                        .cta(response.getCta())
-                        .offerReasoning(response.getOfferReasoning())
-                        .reasoning(response.getReasoning())
+                        .content(jsonResponse)
                         .build()))
                 .orElseThrow(() -> new RuntimeException("rponse from openAi is not valid"));
     }

@@ -3,6 +3,7 @@ package com.tera.ChatAI.controller.impl;
 import com.tera.ChatAI.controller.ChatAPI;
 import com.tera.ChatAI.dto.ChatDTO;
 import com.tera.ChatAI.entity.PersonalisedContent;
+import com.tera.ChatAI.service.ChatSegmentService;
 import com.tera.ChatAI.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 @RestController
 public class ChatController implements ChatAPI {
 
-    private final ChatService chatService;
+    private final ChatSegmentService chatService;
 
     @Override
     public ResponseEntity<String> chat(String message) {

@@ -20,4 +20,35 @@ public class OpenAiPersonalisedContentResponse {
         String offerReasoning;
         String reasoning;
     }
+    @Getter
+    @Setter
+    @Builder
+    public static class EducationalWhatsappMessage {
+        String heading;
+        String subtext;
+        String cta;
+        String offerReasoning;
+        String reasoning;
+    }
+    @Getter
+    @Setter
+    @Builder
+    public static class EducationalNotificationMessage {
+        String heading;
+        String subtext;
+        String cta;
+        String offerReasoning;
+        String reasoning;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    public static class EducationalEmailMessage {
+        String heading;
+        String subtext;
+        String cta;
+        String offerReasoning;
+        String reasoning;
+    }
 }

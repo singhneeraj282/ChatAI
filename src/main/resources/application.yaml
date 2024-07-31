@@ -36,11 +36,11 @@ spring:
           enabled: true
           options:
             deployment-name: bankChatSegmentAi
-            response-format: json
+            #response-format: json
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml
     enabled: true
-    #drop-first: true #---initially set it true later set to false
+   # drop-first: true #---initially set it true later set to false
 management:
   endpoints:
     web:

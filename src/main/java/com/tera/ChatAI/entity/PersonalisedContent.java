@@ -22,16 +22,16 @@ public class PersonalisedContent {
     @Column(name = "segment")
     private String segment;
 
-    @Column(name = "persona")
-    private String persona;
-
     @Column(name = "type")
     private String type;
 
     @Column(name = "message_type")
     private String messageType;
 
-    @Column(name = "heading")
+    @Column(name = "content")
+    private String content;
+
+    /*@Column(name = "heading")
     private String heading;
 
     @Column(name = "subtext")
@@ -44,7 +44,7 @@ public class PersonalisedContent {
     private String offerReasoning;
 
     @Column(name = "reasoning")
-    private String reasoning;
+    private String reasoning;*/
 
     @Version
     @Column(name= "version")
