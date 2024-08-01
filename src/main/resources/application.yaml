@@ -4,6 +4,22 @@ server:
 spring:
   application:
     name: ChatAI
+  security:
+    user:
+      name: kensaa
+      password: Jan@2020ne
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://bank-data-server.database.windows.net:1433;database=bank-data;user=bank-data-admin@bank-data-server;password=Jan@2020ne;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.SQLServerDialect
+    hibernate:
+      ddl-auto: none # spring will create the table's
   ai:
     openai:
       base-url: https://api.openai.com
@@ -12,4 +28,21 @@ spring:
         options:
           model: gpt-3.5-turbo
           temperature: 0.7
-
+    azure:
+      openai:
+        api-key: db7392e32ee5462bb6ec42c48fccd7a2
+        endpoint: https://bank-chat-segment-ai.openai.azure.com/
+        chat:
+          enabled: true
+          options:
+            deployment-name: bankChatSegmentAi
+            #response-format: json
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+    enabled: true
+   # drop-first: true #---initially set it true later set to false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ChatAI
+  datasource:
+    driverClassName: org.h2.Driver
+          #spring.datasource.url=jdbc:h2:mem:quiz
+    username: sa
+    password: sa
+    #if want  to persist data/save data (not delete after every restart)
+    url: jdbc:h2:C:/Users/91757/Desktop/ChatAI/data/bankData
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: none # spring will create the table's
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

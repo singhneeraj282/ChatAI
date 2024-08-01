@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="neeraj" id="createTablesForSegment">
+        <createTable tableName="CUSTOMER_MASTER_DATA">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="avg_monthly_balance" type="decimal(30,6)"/>
+            <column name="total_inflows" type="BIGINT"/>
+            <column name="total_outflows" type="BIGINT"/>
+            <column name="age" type="BIGINT"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+        </createTable>
+
+        <createTable tableName="CUSTOMER_MERCHANT_CATEGORY">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="merchant_type" type="varchar(255)"/>
+            <column name="merchant_amount" type="decimal(30,6)"/>
+            <column name="customer_master_data_id" type="BIGINT"/>
+            <column name="version" type="bigint" defaultValue="0"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="customer_master_data_id"
+                                 baseTableName="CUSTOMER_MERCHANT_CATEGORY"
+                                 constraintName="fk_customer_master_data_CUSTOMER_MERCHANT_CATEGORY_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="CUSTOMER_MASTER_DATA"/>
+    </changeSet>
+</databaseChangeLog>
