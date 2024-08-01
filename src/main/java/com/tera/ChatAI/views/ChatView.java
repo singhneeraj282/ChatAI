@@ -1,6 +1,5 @@
 package com.tera.ChatAI.views;
 
-import com.tera.ChatAI.entity.PersonalisedContent;
 import com.tera.ChatAI.repository.CustomerRepository;
 import com.tera.ChatAI.repository.PersonalisedContentRepository;
 import lombok.RequiredArgsConstructor;
@@ -53,25 +52,26 @@ public class ChatView {
         return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
     }
 
-    @RequestMapping("/downloadSegmentDataCsv")
+    @RequestMapping("/downloadSegmentDataLogic")
     @ResponseBody
     public HttpEntity<ByteArrayResource>  downloadSegmentDataCsv(Model model) throws IOException {
         InputStream in = getClass()
-                .getResourceAsStream("/files/SegmentData.xlsx");
+                .getResourceAsStream("/files/SegmentationLogicImage.png");
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "force-download"));
-        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=SegmentData.xlsx");
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=SegmentationLogic.png");
         return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
+
     }
 
-    @RequestMapping("/downloadSegmentDataLogic")
+    @RequestMapping("/downloadSegmentDefinition")
     @ResponseBody
     public HttpEntity<ByteArrayResource>  downloadSegmentDataLogic(Model model) throws IOException {
         InputStream in = getClass()
-                .getResourceAsStream("/files/SegmentDataLogic.xlsx");
+                .getResourceAsStream("/files/persona_definition.xlsx");
         HttpHeaders header = new HttpHeaders();
         header.setContentType(new MediaType("application", "force-download"));
-        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=SegmentDataLogic.xlsx");
+        header.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=persona_definition.xlsx");
         return new HttpEntity<>(new ByteArrayResource(IOUtils.toByteArray(in)), header);
     }
 

@@ -138,34 +138,6 @@ public class ChatSegmentService {
         byte[] rbGuideLineInputFile = getClass()
                 .getResourceAsStream("/files/rbi.pdf")
                 .readAllBytes();
-        /* Educational
-        //whatsapp
-        var educationalWhatsappPC = Stream.of("Retired - Globetrotter -ATM", "Young Adult - Salaried - High Debit", "Freelancer - High Credit")
-                .map(segment -> {
-                    var personalisedContent = personalisedContentRepository
-                            .findBySegmentAndTypeAndMessageType(segment, "educational", "whatsapp");
-                    if (nonNull(personalisedContent))
-                        return personalisedContent;
-                    return populateMessagesForEducationalSegmentWhatsapp(rbGuideLineInputFile, segment);
-                }).toList();
-        //email
-        var educationalEmailPC = Stream.of("Retired - Globetrotter -ATM", "Young Adult - Salaried - High Debit", "Freelancer - High Credit")
-                .map(segment -> {
-                    var personalisedContent = personalisedContentRepository
-                            .findBySegmentAndTypeAndMessageType(segment, "educational", "email");
-                    if (nonNull(personalisedContent))
-                        return personalisedContent;
-                    return populateMessagesForEducationalSegmentEmail(rbGuideLineInputFile, segment);
-                }).toList();
-        //notification
-        var educationalNotificationPc = Stream.of("Retired - Globetrotter -ATM", "Young Adult - Salaried - High Debit", "Freelancer - High Credit")
-                .map(segment -> {
-                    var personalisedContent = personalisedContentRepository
-                            .findBySegmentAndTypeAndMessageType(segment, "educational", "notification");
-                    if (nonNull(personalisedContent))
-                        return personalisedContent;
-                    return populateMessagesForEducationalSegmentNotification(rbGuideLineInputFile, segment);
-                }).toList();*/
 
         //MARKETING1
 
